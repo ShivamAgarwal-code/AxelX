@@ -4,9 +4,9 @@ import styles from "./ModalPurchase.module.sass";
 import Modal from "../Modal";
 import Icon from "../Icon";
 
-import { numberWithCommas } from "../../utils";
-
 import CreateLendContext from "../../context/LendContext";
+
+import { numberWithCommas } from "../../utils";
 
 import PreviewLoader from "../PreviewLoader";
 import Link from "next/link";
@@ -18,7 +18,7 @@ const item = {
   crypto: "40.7826",
   price: 183.5217,
   location: "Bored Ape Yacht Club",
-  tenure: "4"
+  tenure: "4",
 };
 
 const exchange = 2646.4;
@@ -86,8 +86,8 @@ const Waiting = ({}) => {
       />
       <h5 className={cn("h5", styles.subtitle)}>Waiting for confirmation</h5>
       <div className={styles.text}>
-        You are lending{" "}
-        <span className={styles.red}>{activeObject.title}</span> tokens worth of {" "}
+        You are purchasing{" "}
+        <span className={styles.red}>{activeObject.title}</span> for{" "}
         <span className={styles.dark}>{activeObject.amount} TFil</span>
       </div>
     </div>
@@ -101,9 +101,9 @@ const Complete = ({}) => (
     </div>
     <h5 className={cn("h5", styles.subtitle)}>Purchased</h5>
     <div className={styles.text}>Awesome, transaction submitted.</div>
-    <Link href='/dashboard'>
+    <Link href='/marketplace'>
       <p className={styles.explore}>
-        View on dashboard
+        View on marketplace
         <Icon name='external-link' size='16' />
       </p>
     </Link>
@@ -114,14 +114,14 @@ const Joy = ({ setStateModal }: ModalType) => {
   const [value, setValue] = useState<boolean>(false);
   const [terms, setTerms] = useState<boolean>(false);
   const { activeObject, acceptOffer } = useContext(CreateLendContext);
-  
-const handleAcceptOffer = async () => {
-  const response = await acceptOffer(activeObject);
-  console.log('Accept offer res💵: ', response);
-  
-  if (response) setStateModal("complete")
-  else setStateModal("error") 
-}
+
+  const handleAcceptOffer = async () => {
+    const response = await acceptOffer(activeObject);
+    console.log("Accept offer res💵: ", response);
+
+    if (response) setStateModal("complete");
+    else setStateModal("error");
+  };
 
   return (
     <div>
