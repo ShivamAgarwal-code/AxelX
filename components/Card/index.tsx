@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./Card.module.sass";
 import cn from "classnames";
@@ -17,10 +17,9 @@ type CardProps = {
   item: any;
   bigPreview?: boolean;
   saleItem?: boolean;
-  offer?: any;
 };
 
-const Card = ({ className, item, bigPreview, saleItem, offer }: CardProps) => {
+const Card = ({ className, item, bigPreview, saleItem }: CardProps) => {
   const [visibleModalSale, setVisibleModalSale] = useState<boolean>(false);
   const [blink, setBlink] = useState<boolean>(false);
 
@@ -94,7 +93,7 @@ const Card = ({ className, item, bigPreview, saleItem, offer }: CardProps) => {
                 blink={blink}
                 form
               >
-                <Form profile={undefined} />
+                <Form />
               </Modal>
             </button>
           )}
@@ -117,11 +116,11 @@ const Card = ({ className, item, bigPreview, saleItem, offer }: CardProps) => {
       <div className={cn("details_bottom", styles.details_bottom)}>
         <div className={styles.stat}>
           <div className={cn("label-purple", styles.code)}>#{item.code}</div>
-          <div className={styles.crypto}>{offer.amount} TFil</div>
+          <div className={styles.crypto}>{item.crypto}</div>
         </div>
         <div className={styles.info}>
           <div className={cn("title", styles.title)}>{item.title}</div>
-          <div className={styles.price}>{offer.tenure} Months</div>
+          <div className={styles.price}>${numberWithCommas(item.price)}</div>
         </div>
         {item.location && (
           <div className={styles.location}>

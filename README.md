@@ -1,51 +1,39 @@
-# Inspiration
-"Borrowing Against NFTs Is Now a $1 Billion Industry" - according to Dune Analytics and Decrypt. As of April 6, NFTfi facilitated more than $390 million, BendDAO boasts nearly $298 million, and Paraspace has already hit $236 million. The number of cumulative users has also soared well above 40,000. “NFT holders are increasingly looking for ways to unlock the value of their assets without selling them, and lending and borrowing platforms like JPEG'd offer a solution to this need,” JPEG’d’s marketing and community lead Derrick Nguyen told Decrypt. “Additionally, decreased volatility has been another result of the NFT market maturing, which has made using NFTs as collateral more and more viable and attractive.” NFTs are far more stable and less volatile than tokens like TFil and Ether. Therefore, NFTs are a better and more secure way to take up loans. Despite these amazing stats Filecoin ecosystem do not have any such lending protocol for their Storage Providers and in addition the current solutions offer loan only up to 40% of the NFT market value . Which is very low and not in favor of the borrower. Also, there is no additional incentives for lenders apart from the APY they receive after the offer ends. Hence, we came up with the idea of AxelX DAO: A reputation based cross-chain P2P NFT-collateralized lending protocol governed by a DAO.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# What it does
-AxelX aims to solve the common problems faced by any borrower be it a Storage Provider in Filecoin or a user wanting some liquidity to earn leverage. The 5 main problems it solves are:
+## Getting Started
 
-Cross-chain NFT collateralized loan to ensure stable collateral value across chains. We integrated Axelar to enable cross-chain messaging and lending possible in our application. Cross-chain is one of the key and most important feature in our application. A user can lend an NFT on the Polygon network and get tokens in TFil in Filecoin network that he can use in setting up the Storage requirements.
+First, run the development server:
 
-Over-collateralized loans are the most common type of loans in today's market. But not everyone has so much liquidity or worth of assets. To solve this problem among the Storage Providers, AxelX sets up a reputation mechanism. The reputation majorly depends on the uptime, storage capacity, pricing and history/reputation in Filecoin Network. Also, a Storage Provider can stake money to out protocol to leverage under-collateralized loans in some cases.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-Hedging and risk management through derivatives like Futures and Options. NFTs and cryptocurrencies are very volatile at this point of time and need advance risk management and tolerance mechanisms. Derivates are an effective solution for this problem. Futures contract can be used to lock an APY return from the borrower by negotiating and not be obliged to give any more or less APY after the tenure. The lender also has a security for his earning. A Put Option can be used as an insurance for steep valuation drop in NFTs due to any reasons. Insurance can be bought with a 10% down payment.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-More accurate and scalable machine learning model that can predict future prices for NFTs. State of the art model is used Recurrent Neural Network as base architecture which has proven result in various industrial application. It uses past NFT transaction as feed data and compute all underlying pattern . This process is training . once the model is trained , it is now set to make prediction of nft to any upcoming number of month . Example - we predicted the price of one NFT of BAYC to be 55 eth which as currently listed at 47 eth after 3 month . This mean model has capture upcoming positive momentum of this nft . It seems justifiable as recession is hitting , US economy destabilize people start to move their investment from government bond and bank to some decentralized system (here - NFT) . We have used tensorflow google framework to architect the Recurrent Neural Network and Adam optimiser to optimize the model which uses stochastic gradient method to update weight of neuron.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-Flexible offers between peers like P2P lending with lending security like a AMM. Initiating an offer is very simple and interactive between two users. This takes place like a P2P lending protocol system. But once the borrower repays the loan, the lender is not obliged to redeem his tokens and cash out his earnings. After an offer ends, 1 week cooling period is provided after which a lender might choose to let the protocol invest their funds in the liquidity pool which will give them additional APY until they cash it out. The calculation of the pool APY is the ratio of the total worth of NFTs our escrow is holding to the Total Value Locked (TVL) in our liquidity pool by the lenders per block.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-# How we built it
-There are 3 major domains which we have worked to make this product best suitable for the market and be a utility to the community.
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Blockchain and FVM: The deals made, derivatives and position management, lending are all automated and secured using the Filecoin VM. All the commutations are made on chain to ensure data integrity and transparency among the dealers. Futures and options contract are maintained using smart contract to avoid any middle man and make the system as much trustless as possible. For the smart contracts we used Solidity and Hardhat along with Openzeppelin for secure smart contracts.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-AI/ML Model: A time series prediction using a Recurrent Neural Network (RNN) model. It fetches NFT price data from an API, preprocesses the data, trains an LSTM (long short-term memory networks) model, and predicts the price after a specified period. The current implementation utilizes stochastic optimization algorithms to train and optimize the model for accurate predictions. A Sequential model is created using Keras, and an LSTM layer is added. The model is compiled with the mean squared error loss function and the Adam optimizer. The model is trained using the training data. Refer this to understand more: https://bit.ly/3MtZVSA (Documentation)
+## Learn More
 
-Tokenomics and APY: Our application takes a hybrid approach in order to preserve the flexibility of offer in P2P and the investment security like AMM. The APY of the liquidity pool will be determined by the ratio of the total worth of NFTs our escrow is holding to the Total Value Locked (TVL) in our liquidity pool by the lenders per block in the Filecoin network. This will provide an APY which takes into account factors like demand of the protocol, lenders' and Storage Providers' sentiments and Filecoin experience.
+To learn more about Next.js, take a look at the following resources:
 
-# Challenges we ran into
-We lacked data, due to which many times we needed to reconsider of model architecture . Expected data was major challenge we ran through . Moreover rigorous test was also a challenge to ensure that outcome of out model should be more accurate. But to counter this problem we devised a ML model that would give accurate results despite that and we were able to achieve it. Our model works close to accurate and shows impressive results.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-We were not very familiar with Tokenomics and therefore had to brainstorm a lot to manage the APYs and the liquidity. After a lot of studying we finally could find a more user governed, demand and supply and sentiment based calculation that will provide a fair valuation for all the investors (APY) and the borrowers (APR).
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-# Accomplishments that we're proud of
-The fact that we were able to built the prototype with a good UI makes me feel really proud. There were a number of times when things went wrong and we had to brainstorm our way out. We worked in a relatively high pressure situation and happy with the output to our efforts. The team took full responsibility of their work and showed enthusisasm during the entire span of the hackathon. Also, the fact that we have built this product keeping in mind the problems of Storage Providers in Filecoin network, makes us feel good about it. We have carefully figured out the pain points of the Storage Providers and tried to devise a solution that was both practical and more incentivizing for both the borrower and the lender making it a utility protocol for the community.
+## Deploy on Vercel
 
-# What we learned
-For this project I needed to learn about the current market of lending and borrowing. The technology and mechanism involved. Also, I deep dived into P2P lending and Automated Market Maker protocols like AAVE.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-I learned about stocks, bonds, futures and options, basically about the finance world and their mechanism. I was really amazed by all the concepts and happy that I could improve the traditional systems with the help of blockchain and FVM.
-
-Axelar for cross-chain interactions was ** i) very easy to understand and integrate in our smart contracts** to send messages cross-chain. The ii) documentation was very well written along with real-life examples in github. Axelar does the work very seamlessly and the iii) AxelarScan is quite quick to index the transactions. Although, it takes around iv) 30 - 40 mins to execute the transaction which was quite high. Apart from that experience with Axelar was very smooth and we didn't have any major issue integrating it. Cross-chain functionality is a untapped domain in the lending protocols and Axelar powered our application with cross-chain functionality for cross-chain lending which is of high utility. A user can lend his/her NFT in Polygon and take up a loan in Filecoin and anything of that sort. This simplifies the user experience and help larger user adoption to our application. Furthermore, Axelar can also be used to send funds from other chain to Filecoin which can make the life of a lender easier.
-
-AxelarScan Link: https://testnet.axelarscan.io/gmp/0x355047e2ecfe7e8920038684506dfee8b25db9ac19c9f7c21915bf8097850460 https://testnet.axelarscan.io/gmp/0x04c87b4a3281771a71a9d6bfafda71c84b65267f187def7ed3c9b88ef9713ff8
-
-Transaction Hash: 0x355047e2ecfe7e8920038684506dfee8b25db9ac19c9f7c21915bf8097850460 0x04c87b4a3281771a71a9d6bfafda71c84b65267f187def7ed3c9b88ef9713ff8
-
-We have integrated Tableland, a decentralized SQL solution, to unlock unparalleled transparency and reliability, revolutionizing the way we store and access NFT dealings. Our platform actors now have exclusive, secure access to specific transaction details, while borrowers and lenders can collaboratively tailor deal terms using Tableland's access-controls. This integration not only enhances the security and efficiency of our platform but also improves the overall user experience for our community of borrowers and lenders.
-What's next for AxelX DAO
-More DataDAO specific features like portal for users to upload their NFTs and help the ML model give more accurate results for an incentive. It can lead to a specialized DAO which has the latest and curated data sets regarding NFTs
-
-Generalization and optimization the ML model architecture by changing Statistics gradient algorithm with the Bayesian algorithm in order to give model capacity to tell when the prediction made model in not accurate to increase the robustness of model.
-
-Push Protocol notification and chat integration to make the offer stage more flexible and pleasing for the users. Event triggered notifications will allow them to stay up-to date with their position in the market.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# GainX

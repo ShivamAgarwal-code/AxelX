@@ -7,50 +7,48 @@ const PlayNow = "/";
 
 const NavigationList: NavigationType[] = [
   {
-    title: "Home",
-    url: "/",
+    title: "Gameplay",
+    url: "/gameplay",
   },
-  // {
-  //   title: "Gameplay",
-  //   url: "/gameplay",
-  // },
-  // {
-  //   title: "Roadmap",
-  //   url: "/roadmap",
-  // },
+  {
+    title: "Roadmap",
+    url: "/roadmap",
+  },
   {
     title: "Marketplace",
     url: "/marketplace",
   },
   {
-    title: "Dashboard",
-    url: "/dashboard",
+    title: "Download & Play",
+    url: "/download-and-play",
   },
-  // {
-  //   title: "Download & Play",
-  //   url: "/download-and-play",
-  // },
 ];
 
 const NavigationListFooter: NavigationType[] = [
   {
-    title: "Home",
-    url: "/",
+    title: "Gameplay",
+    url: "/gameplay",
   },
-
+  {
+    title: "Roadmap",
+    url: "/roadmap",
+  },
   {
     title: "Marketplace",
     url: "/marketplace",
   },
   {
-    title: "Dashboard",
-    url: "/dashboard",
+    title: "Download & Play",
+    url: "/download-and-play",
   },
-
-  // {
-  //   title: "Wishlist detailed",
-  //   url: "/wishlist-detailed",
-  // },
+  {
+    title: "Meet the team",
+    url: "/meet-the-team",
+  },
+  {
+    title: "Wishlist detailed",
+    url: "/wishlist-detailed",
+  },
 ];
 
 const LegalList: NavigationType[] = [

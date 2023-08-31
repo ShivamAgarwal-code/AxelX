@@ -28,7 +28,12 @@ const Preview = ({
       className={cn(styles.preview, className)}
       style={{ background: background }}
     >
-      <Image src={image} width={372} height={372} alt='image' />
+      <Image
+        src={image.src}
+        width={image.width}
+        height={image.height}
+        alt={image.alt}
+      />
       <Back className={styles.back} tooltip='Back' url={url} dark />
       {share && (
         <>

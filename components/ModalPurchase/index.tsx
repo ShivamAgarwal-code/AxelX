@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./ModalPurchase.module.sass";
 import Modal from "../Modal";
@@ -6,19 +6,15 @@ import Icon from "../Icon";
 
 import { numberWithCommas } from "../../utils";
 
-import CreateLendContext from "../../context/LendContext";
-
 import PreviewLoader from "../PreviewLoader";
 import Link from "next/link";
 import Checkbox from "../Checkbox";
 
 const item = {
-  escrowId: "0",
-  name: "Shiny APE",
-  crypto: "40.7826",
-  price: 183.5217,
-  location: "Bored Ape Yacht Club",
-  tenure: "4"
+  name: "Lumburr",
+  crypto: "0,008 ETH",
+  price: 32.018,
+  location: "Mars",
 };
 
 const exchange = 2646.4;
@@ -34,65 +30,54 @@ type ModalType = {
   setStateModal: (e: ModalStatesType) => void;
 };
 
-const Confirm = ({ setStateModal }: ModalType) => {
-  const { activeObject } = useContext(CreateLendContext);
-
-  return (
-    <>
-      <div className={cn("title", styles.title)}>Confirm purchase</div>
-      <div className={styles.info} style={{ background: "#393c44" }}>
-        <div>
-          <div className={cn("h6", styles.name)}>{activeObject.title}</div>
-          {/* <div className={styles.location}>
-            APY
-          </div> */}
-        </div>
-        <div>
-          <div className={cn("h6", styles.crypto)}>
-            {activeObject.amount} TFil
-          </div>
-          <div className={styles.price}>APY: {activeObject.apy}%</div>
+const Confirm = ({ setStateModal }: ModalType) => (
+  <>
+    <div className={cn("title", styles.title)}>Confirm purchase</div>
+    <div className={styles.info}>
+      <div>
+        <div className={cn("h6", styles.name)}>{item.name}</div>
+        <div className={styles.location}>
+          <Icon name='location' size={20} />
+          {item.location}
         </div>
       </div>
-      <div className={styles.exchange}>
-        <Icon name='start' />
-        Tenure
-        <div className={styles.value}>{activeObject.tenure} Months</div>
-      </div>
-
-      <button
-        className={cn("button", styles.confirm)}
-        onClick={() => setStateModal("joy")}
-      >
-        Next
-      </button>
-      <div className={styles.note}>
-        You are buying{" "}
-        <span style={{ color: "#fff" }}>{activeObject.title}</span> for{" "}
-        <span style={{ color: "#fff" }}>{activeObject.amount} TFil.</span>
-      </div>
-    </>
-  );
-};
-
-const Waiting = ({}) => {
-  const { activeObject } = useContext(CreateLendContext);
-
-  return (
-    <div className={cn(styles.waiting, styles.centered)}>
-      <PreviewLoader
-        className={styles.loader}
-        srcImage='/images/content/loader-char.jpg'
-      />
-      <h5 className={cn("h5", styles.subtitle)}>Waiting for confirmation</h5>
-      <div className={styles.text}>
-        You are lending{" "}
-        <span className={styles.red}>{activeObject.title}</span> tokens worth of {" "}
-        <span className={styles.dark}>{activeObject.amount} TFil</span>
+      <div>
+        <div className={cn("h6", styles.crypto)}>{item.crypto}</div>
+        <div className={styles.price}>~ $ {numberWithCommas(item.price)}</div>
       </div>
     </div>
-  );
-};
+    <div className={styles.exchange}>
+      <Icon name='usd' />
+      Price
+      <div className={styles.value}>1 ETH = ${numberWithCommas(exchange)}</div>
+    </div>
+
+    <button
+      className={cn("button", styles.confirm)}
+      onClick={() => setStateModal("joy")}
+    >
+      Next
+    </button>
+    <div className={styles.note}>
+      Corrupti et voluptas. Ut ipsum <span>0,009 ETH</span> fugiat odio. Impedit
+      ullam vel et est rror enim.
+    </div>
+  </>
+);
+
+const Waiting = ({}) => (
+  <div className={cn(styles.waiting, styles.centered)}>
+    <PreviewLoader
+      className={styles.loader}
+      srcImage='/images/content/loader-char.jpg'
+    />
+    <h5 className={cn("h5", styles.subtitle)}>Waiting for confirmation</h5>
+    <div className={styles.text}>
+      You are purchasing <span className={styles.red}>Lumburr</span> for{" "}
+      <span className={styles.dark}>0,0008 ETH</span>
+    </div>
+  </div>
+);
 
 const Complete = ({}) => (
   <div className={cn(styles.centered)}>
@@ -101,27 +86,18 @@ const Complete = ({}) => (
     </div>
     <h5 className={cn("h5", styles.subtitle)}>Purchased</h5>
     <div className={styles.text}>Awesome, transaction submitted.</div>
-    <Link href='/dashboard'>
-      <p className={styles.explore}>
-        View on dashboard
+    <Link href='/'>
+      <a className={styles.explore}>
+        View on explore
         <Icon name='external-link' size='16' />
-      </p>
+      </a>
     </Link>
   </div>
 );
 
 const Joy = ({ setStateModal }: ModalType) => {
-  const [value, setValue] = useState<boolean>(false);
-  const [terms, setTerms] = useState<boolean>(false);
-  const { activeObject, acceptOffer } = useContext(CreateLendContext);
-  
-const handleAcceptOffer = async () => {
-  const response = await acceptOffer(activeObject);
-  console.log('Accept offer res💵: ', response);
-  
-  if (response) setStateModal("complete")
-  else setStateModal("error") 
-}
+  const [value, setValue] = useState<boolean>(true);
+  const [terms, setTerms] = useState<boolean>(true);
 
   return (
     <div>
@@ -178,10 +154,7 @@ const handleAcceptOffer = async () => {
       </div>
       <button
         className={cn("button", styles.confirm)}
-        onClick={() => {
-          setStateModal("waiting");
-          handleAcceptOffer();
-        }}
+        onClick={() => setStateModal("waiting")}
         style={{ marginBottom: "0px" }}
       >
         Confirm purchase
