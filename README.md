@@ -1,6 +1,7 @@
+# Inspiration
 "Borrowing Against NFTs Is Now a $1 Billion Industry" - according to Dune Analytics and Decrypt. As of April 6, NFTfi facilitated more than $390 million, BendDAO boasts nearly $298 million, and Paraspace has already hit $236 million. The number of cumulative users has also soared well above 40,000. “NFT holders are increasingly looking for ways to unlock the value of their assets without selling them, and lending and borrowing platforms like JPEG'd offer a solution to this need,” JPEG’d’s marketing and community lead Derrick Nguyen told Decrypt. “Additionally, decreased volatility has been another result of the NFT market maturing, which has made using NFTs as collateral more and more viable and attractive.” NFTs are far more stable and less volatile than tokens like TFil and Ether. Therefore, NFTs are a better and more secure way to take up loans. Despite these amazing stats Filecoin ecosystem do not have any such lending protocol for their Storage Providers and in addition the current solutions offer loan only up to 40% of the NFT market value . Which is very low and not in favor of the borrower. Also, there is no additional incentives for lenders apart from the APY they receive after the offer ends. Hence, we came up with the idea of AxelX DAO: A reputation based cross-chain P2P NFT-collateralized lending protocol governed by a DAO.
 
-What it does
+# What it does
 AxelX aims to solve the common problems faced by any borrower be it a Storage Provider in Filecoin or a user wanting some liquidity to earn leverage. The 5 main problems it solves are:
 
 Cross-chain NFT collateralized loan to ensure stable collateral value across chains. We integrated Axelar to enable cross-chain messaging and lending possible in our application. Cross-chain is one of the key and most important feature in our application. A user can lend an NFT on the Polygon network and get tokens in TFil in Filecoin network that he can use in setting up the Storage requirements.
@@ -13,7 +14,7 @@ More accurate and scalable machine learning model that can predict future prices
 
 Flexible offers between peers like P2P lending with lending security like a AMM. Initiating an offer is very simple and interactive between two users. This takes place like a P2P lending protocol system. But once the borrower repays the loan, the lender is not obliged to redeem his tokens and cash out his earnings. After an offer ends, 1 week cooling period is provided after which a lender might choose to let the protocol invest their funds in the liquidity pool which will give them additional APY until they cash it out. The calculation of the pool APY is the ratio of the total worth of NFTs our escrow is holding to the Total Value Locked (TVL) in our liquidity pool by the lenders per block.
 
-How we built it
+# How we built it
 There are 3 major domains which we have worked to make this product best suitable for the market and be a utility to the community.
 
 Blockchain and FVM: The deals made, derivatives and position management, lending are all automated and secured using the Filecoin VM. All the commutations are made on chain to ensure data integrity and transparency among the dealers. Futures and options contract are maintained using smart contract to avoid any middle man and make the system as much trustless as possible. For the smart contracts we used Solidity and Hardhat along with Openzeppelin for secure smart contracts.
@@ -22,15 +23,15 @@ AI/ML Model: A time series prediction using a Recurrent Neural Network (RNN) mod
 
 Tokenomics and APY: Our application takes a hybrid approach in order to preserve the flexibility of offer in P2P and the investment security like AMM. The APY of the liquidity pool will be determined by the ratio of the total worth of NFTs our escrow is holding to the Total Value Locked (TVL) in our liquidity pool by the lenders per block in the Filecoin network. This will provide an APY which takes into account factors like demand of the protocol, lenders' and Storage Providers' sentiments and Filecoin experience.
 
-Challenges we ran into
+# Challenges we ran into
 We lacked data, due to which many times we needed to reconsider of model architecture . Expected data was major challenge we ran through . Moreover rigorous test was also a challenge to ensure that outcome of out model should be more accurate. But to counter this problem we devised a ML model that would give accurate results despite that and we were able to achieve it. Our model works close to accurate and shows impressive results.
 
 We were not very familiar with Tokenomics and therefore had to brainstorm a lot to manage the APYs and the liquidity. After a lot of studying we finally could find a more user governed, demand and supply and sentiment based calculation that will provide a fair valuation for all the investors (APY) and the borrowers (APR).
 
-Accomplishments that we're proud of
+# Accomplishments that we're proud of
 The fact that we were able to built the prototype with a good UI makes me feel really proud. There were a number of times when things went wrong and we had to brainstorm our way out. We worked in a relatively high pressure situation and happy with the output to our efforts. The team took full responsibility of their work and showed enthusisasm during the entire span of the hackathon. Also, the fact that we have built this product keeping in mind the problems of Storage Providers in Filecoin network, makes us feel good about it. We have carefully figured out the pain points of the Storage Providers and tried to devise a solution that was both practical and more incentivizing for both the borrower and the lender making it a utility protocol for the community.
 
-What we learned
+# What we learned
 For this project I needed to learn about the current market of lending and borrowing. The technology and mechanism involved. Also, I deep dived into P2P lending and Automated Market Maker protocols like AAVE.
 
 I learned about stocks, bonds, futures and options, basically about the finance world and their mechanism. I was really amazed by all the concepts and happy that I could improve the traditional systems with the help of blockchain and FVM.
