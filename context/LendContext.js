@@ -3,9 +3,10 @@ import { ethers, utils } from "ethers";
 import Web3Modal from "web3modal";
 const Moralis = require("moralis").default;
 const { EvmChain } = require("@moralisweb3/common-evm-utils");
-import { Database } from "@tableland/sdk";
+// import { Database } from "@tableland/sdk";
 import axios from "axios";
 
+// import { Database } from "@tableland/sdk";
 
 import gainx from "./Gainx.json";
 import gainxToken from "./GainxToken.json";
@@ -70,44 +71,44 @@ export const CreateLendProvider = ({ children }) => {
     value: "",
   });
 
-  async function maketable() {
-    const prefix = "demo_table";
-    const { meta: create } = await database
-      .prepare(`CREATE TABLE ${prefix}(id text, data text);`)
-      .run();
-    const { name } = create.txn;
-    setTablename(name);
-    console.log("table", name);
-  }
+  // async function maketable() {
+  //   const prefix = "demo_table";
+  //   const { meta: create } = await database
+  //     .prepare(`CREATE TABLE ${prefix}(id text, data text);`)
+  //     .run();
+  //   const { name } = create.txn;
+  //   setTablename(name);
+  //   console.log("table", name);
+  // }
 
-  async function writetable() {
-    const { meta: insert } = await database
-      .prepare(`INSERT INTO ${tablename} (id, data) VALUES (?, ?);`)
-      .bind(parseInt(tabledata?.key), tabledata?.value.toString())
-      .run();
+  // async function writetable() {
+  //   const { meta: insert } = await database
+  //     .prepare(`INSERT INTO ${tablename} (id, data) VALUES (?, ?);`)
+  //     .bind(parseInt(tabledata?.key), tabledata?.value.toString())
+  //     .run();
 
-    await insert.txn.wait();
+  //   await insert.txn.wait();
 
-    const { results } = await database
-      .prepare(`SELECT * FROM ${tablename};`)
-      .all();
-    console.log(results);
-  }
+  //   const { results } = await database
+  //     .prepare(`SELECT * FROM ${tablename};`)
+  //     .all();
+  //   console.log(results);
+  // }
 
-  async function connectDatabase(signer) {
-    const db = new Database({ signer });
-    return db;
-  }
+  // async function connectDatabase(signer) {
+  //   const db = new Database({ signer });
+  //   return db;
+  // }
 
-  async function handleConnect() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = provider.getSigner();
-    setSigner(signer);
-    const database = await connectDatabase(signer);
-    setDatabase(database);
-    console.log(database);
-  }
+  // async function handleConnect() {
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //   await provider.send("eth_requestAccounts", []);
+  //   const signer = provider.getSigner();
+  //   setSigner(signer);
+  //   const database = await connectDatabase(signer);
+  //   setDatabase(database);
+  //   console.log(database);
+  // }
 
   const [offerId, setOfferId] = useState("");
   let [estAmt, setEstAmt] = useState("");
@@ -156,7 +157,7 @@ export const CreateLendProvider = ({ children }) => {
   const trainModelApi = async () => {
     const res = await axios({
       method: "get",
-      url: `https://nft-api-ou54.onrender.com/train_model/contract_address=${myNftForm.nftAddress}`,
+      url: `https://nft-api-ou54.onrender.com//train_model/contract_address=${myNftForm.nftAddress}`,
       withCredentials: false,
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -431,9 +432,9 @@ export const CreateLendProvider = ({ children }) => {
         apy,
       },
     });
-    handleConnect();
-    maketable();
-    writetable();
+    // handleConnect();
+    // maketable();
+    // writetable();
 
     try {
       if (window.ethereum) {
@@ -487,16 +488,16 @@ export const CreateLendProvider = ({ children }) => {
   };
 
   const acceptOffer = async ({ escrowId }) => {
-    // const demoItem = {
-    //   escrowId: "0",
-    //   name: "Shiny APE",
-    //   crypto: "40.7826",
-    //   price: 183.5217,
-    //   location: "Bored Ape Yacht Club",
-    //   tenure: "4",
-    //   isInsured: false,
-    // };
-    
+    const demoItem = {
+      escrowId: "0",
+      name: "Shiny APE",
+      crypto: "40.7826",
+      price: 183.5217,
+      location: "Bored Ape Yacht Club",
+      tenure: "4",
+      isInsured: false,
+    };
+
     let txAmount, _borrower;
     let _isInsuared = false;
     try {
@@ -530,7 +531,6 @@ export const CreateLendProvider = ({ children }) => {
         let txAmt = txAmount.toString(); // 1.1 --> '1.1'
         txAmount = txAmount.toString(); // 1.1 --> '1.1'
         txAmount = utils.parseEther(txAmount); // '1.1' --> '1.1 * 10^18'
-
 
         const txRes = await contract._acceptOffer(escrowId, _isInsuared, {
           value: txAmt, // '1.1 * 10^18'
