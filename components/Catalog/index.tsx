@@ -1,11 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 import styles from "./Catalog.module.sass";
 import List from "./List";
-import { useRouter } from "next/router";
 // import Filters from "./Filters";
 import Wishlist from "./Wishlist";
-import CreateLendContext from "../../context/LendContext";
 
 import { characters } from "../../mocks/characters";
 import { planets } from "../../mocks/planets";
@@ -24,10 +22,6 @@ type ListProps = {
   saleItem?: boolean;
 };
 
-type AllListType = {
-  allListings?: any[];
-};
-
 const Catalog = ({
   className,
   value,
@@ -43,18 +37,13 @@ const Catalog = ({
 
   const handleSubmit = () => alert();
 
-  const router = useRouter();
-
-  const { allListings }: AllListType = useContext(CreateLendContext);
+  useEffect(() => console.log("🚀 ", characters), []);
 
   return (
     <>
       <div className={cn(styles.catalog, className)}>
         <div className={styles.body}>
           <div className={cn("container", styles.container)}>
-            <p className={styles.heading}>
-              {router.pathname === "/marketplace" ? "Marketplace" : "My NFTs"}
-            </p>
             {/* {wishlist ? (
               <Wishlist value={activeIndex} />
             ) : (
@@ -73,12 +62,7 @@ const Catalog = ({
                 ),
               }[activeIndex]
             )} */}
-            <List
-              offers={allListings}
-              items={characters}
-              crop={crop}
-              saleItem={saleItem}
-            />
+            <List items={characters} crop={crop} saleItem={saleItem} />
           </div>
         </div>
       </div>

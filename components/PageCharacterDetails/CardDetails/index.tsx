@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState } from "react";
 import styles from "./CardDetails.module.sass";
 import cn from "classnames";
 import Preview from "../../Details/Preview";
@@ -9,11 +9,8 @@ import TabDetails from "./TabDetails";
 import History from "../../Details/History";
 // import ModalShareProfile from "../../ModalShareProfile";
 import ModalPurchase from "../../ModalPurchase";
-import { useRouter } from "next/router";
 
-import { characters } from "../../../mocks/characters";
 import { history } from "../../../mocks/characterDetails";
-import CreateLendContext from "../../../context/LendContext";
 
 const imagePreview = {
   src: "/images/content/characters/image-3.png",
@@ -31,69 +28,23 @@ const CardDetails = ({}: CardDetailsProps) => {
   const [visibleShare, setVisibleShare] = useState<boolean>(false);
   const [visiblePurchase, setVisiblePurchase] = useState<boolean>(false);
 
-  const {
-    allListings,
-    setAllListings,
-    activeObject,
-    setActiveObject,
-    acceptOffer,
-  } = useContext(CreateLendContext);
-
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    let obj, ch;
-    // obj = characters.find(() => allListings.escrowId === id);
-    obj = allListings.find((listing) => listing.escrowId == id);
-    ch = characters.find((char) => char.code == id);
-
-    setActiveObject({
-      title: ch.title,
-      escrowId: obj.escrowId.toString(),
-      amount: obj.amount,
-      image: ch.image.src,
-      tenure: obj.tenure.toString(),
-      apy: obj.apy.toString(),
-      borrower: obj.borrower,
-      accepted: obj.accepted,
-      isInsuared: obj.isInsuared,
-      lender: obj.lender,
-      nftAddress: obj.nftAddress,
-      nftId: obj.nftId.toString(),
-    });
-
-    // obj1 = {
-    //   title: "arv",
-    //   escrowId: obj?.escrowId,
-    //   amount: obj?.amount,
-    //   image: "joy",
-    //   tenure: obj?.tenure,
-    // };
-  }, [allListings]);
-
-  useEffect(() => console.log("==> ", activeObject), [activeObject]);
-  // useEffect(() => console.log("===> ", allListings), []);
-
-  // console.log("===> ", allListings);
-
   return (
     <div className={cn("section-main", styles.section)}>
       <div className={cn("container-xl", styles.container)}>
         <div className={styles.row}>
           <Preview
             className={styles.preview}
-            image={activeObject.image}
+            image={imagePreview}
             background='#E5DCF3'
             url='/marketplace'
           />
           <div className={styles.wrap}>
             <Description
               className={styles.description}
-              title={activeObject.title}
-              code={id}
-              crypto={`${activeObject.amount} TFil`}
-              price={`${activeObject.tenure} Months`}
+              title='Lumburr'
+              code='078982'
+              crypto='0.08 ETH'
+              price={221.38}
             />
             <div className={styles.control}>
               <button
@@ -106,12 +57,12 @@ const CardDetails = ({}: CardDetailsProps) => {
                 visibleModal={visiblePurchase}
                 setVisibleModal={() => setVisiblePurchase(false)}
               />
-              {/* <button
+              <button
                 className={styles.share}
                 onClick={() => setVisibleShare(true)}
               >
                 <Icon name='share' />
-              </button> */}
+              </button>
               {/* <ModalShareProfile
                                 visibleModal={visibleShare}
                                 setVisibleModal={() => setVisibleShare(false)}
