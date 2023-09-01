@@ -38,13 +38,9 @@ I learned about stocks, bonds, futures and options, basically about the finance 
 
 Axelar for cross-chain interactions was ** i) very easy to understand and integrate in our smart contracts** to send messages cross-chain. The ii) documentation was very well written along with real-life examples in github. Axelar does the work very seamlessly and the iii) AxelarScan is quite quick to index the transactions. Although, it takes around iv) 30 - 40 mins to execute the transaction which was quite high. Apart from that experience with Axelar was very smooth and we didn't have any major issue integrating it. Cross-chain functionality is a untapped domain in the lending protocols and Axelar powered our application with cross-chain functionality for cross-chain lending which is of high utility. A user can lend his/her NFT in Polygon and take up a loan in Filecoin and anything of that sort. This simplifies the user experience and help larger user adoption to our application. Furthermore, Axelar can also be used to send funds from other chain to Filecoin which can make the life of a lender easier.
 
-AxelarScan Link: https://testnet.axelarscan.io/gmp/0x355047e2ecfe7e8920038684506dfee8b25db9ac19c9f7c21915bf8097850460 https://testnet.axelarscan.io/gmp/0x04c87b4a3281771a71a9d6bfafda71c84b65267f187def7ed3c9b88ef9713ff8
-
-Transaction Hash: 0x355047e2ecfe7e8920038684506dfee8b25db9ac19c9f7c21915bf8097850460 0x04c87b4a3281771a71a9d6bfafda71c84b65267f187def7ed3c9b88ef9713ff8
-
 We have integrated Tableland, a decentralized SQL solution, to unlock unparalleled transparency and reliability, revolutionizing the way we store and access NFT dealings. Our platform actors now have exclusive, secure access to specific transaction details, while borrowers and lenders can collaboratively tailor deal terms using Tableland's access-controls. This integration not only enhances the security and efficiency of our platform but also improves the overall user experience for our community of borrowers and lenders.
 What's next for AxelX DAO
-More DataDAO specific features like portal for users to upload their NFTs and help the ML model give more accurate results for an incentive. It can lead to a specialized DAO which has the latest and curated data sets regarding NFTs
+More specific features like portal for users to upload their NFTs and help the ML model give more accurate results for an incentive. It can lead to a specialized DAO which has the latest and curated data sets regarding NFTs
 
 Generalization and optimization the ML model architecture by changing Statistics gradient algorithm with the Bayesian algorithm in order to give model capacity to tell when the prediction made model in not accurate to increase the robustness of model.
 
